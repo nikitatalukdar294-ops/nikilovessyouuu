@@ -1,6 +1,6 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $botToken = "8373898628:AAFQw8OskxNEab6s7j0vNKKu1WHJhfoN9Oc";
+    $botToken = "8263387121:AAFYyBiL4N8xgm5qaqHp5m1kMGTegznVeTQ";
     $chatId = "1612742326";
 
     $time = date("d M Y, h:i:s A");

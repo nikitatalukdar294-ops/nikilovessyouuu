@@ -1,4 +1,4 @@
-const CORRECT_PASSWORD = "IOP"; // Change as needed
+const CORRECT_PASSWORD = "Yes"; // Change as needed
 
 function checkPassword() {
   const input = document.getElementById("password").value;
@@ -15,7 +15,7 @@ function checkPassword() {
   startHeartsAnimation();
 
   // 🔔 Send Telegram notification
-  fetch("https://script.google.com/macros/s/AKfycbxcmZTuDxpPQIaMVPqGk3Re2aPWV-NogaolOafsgUsjdlDxKRckaORneGhTAdzck2M1/exec", { method: "POST" });
+  fetch("https://script.google.com/macros/s/AKfycbyIVRzqjsa6pWREKWVixXoUMoIbB5tFeI0vojS7xkptYaOZSIf-6QyekScQJZZ2lKof/exec", { method: "POST" });
 }
 
 }
