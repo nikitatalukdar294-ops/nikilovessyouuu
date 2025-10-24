@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Secret Memory</title>
+    <link rel="stylesheet" href="assets/styles.css" />
+    <style>
+      /* Teddy Animation Container */
+      #teddy-container {
+        position: fixed;
+        top: 0; left: 0;
+        width: 100vw; height: 100vh;
+        pointer-events: none;
+        z-index: 9999;
+      }
+
+      /* Teddy emoji styling */
+      #teddy {
+        position: absolute;
+        font-size: 4rem;
+        cursor: pointer;
+        pointer-events: auto;
+        animation: hover 2s ease-in-out infinite;
+        user-select: none;
+      }
+
+      @keyframes hover {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-8px); }
+      }
+
+      /* Floating text above teddy */
+      #teddy-text {
+        position: absolute;
+        top: -40px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(255, 255, 255, 0.85);
+        padding: 4px 10px;
+        border-radius: 12px;
+        font-family: 'Comic Sans MS', cursive, sans-serif;
+        font-size: 1rem;
+        color: #ff4e85;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        white-space: nowrap;
+        pointer-events: none;
+        user-select: none;
+      }
+
+      /* Hidden class */
+      .hidden {
+        display: none !important;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Teddy Animation (before login) -->
+    <div id="teddy-container">
+      <div id="teddy">🐻</div>
+      <div id="teddy-text">Touch me! 🐻</div>
+    </div>
+
+    <!-- ❤️ Floating Hearts Animation -->
+    <div id="hearts-container" class="hidden"></div>
+
+    <!-- 🔒 Login Screen -->
+    <div class="auth-container fade-in" id="login-container">
+      <h2 class="slide-down">The first place we met</h2>
+      <input
+        type="password"
+        id="password"
+        placeholder="Enter your secret code"
+        class="input-animate"
+      />
+      <button onclick="checkPassword()" class="button-pulse">Unlock</button>
+    </div>
+
+    <!-- 📸 Memory Content -->
+    <div class="memory-container hidden" id="memory-container">
+      <div class="slider-container">
+        <button onclick="prevSlide()" class="nav-btn">⟨</button>
+        <div class="slider">
+          <img src="assets/image2.png" class="slide active" alt="Memory 1" />
+        </div>
+        <button onclick="nextSlide()" class="nav-btn">⟩</button>
+      </div>
+
+      <div class="message-box">
+        <p>
+          🌸 Being with you feels like finally being where I was always meant to
+          be. 🌸
+        </p>
+      </div>
+    </div>
+
+    <script>
+      // Teddy animation logic
+      const teddy = document.getElementById('teddy');
+      const teddyText = document.getElementById('teddy-text');
+      const teddyContainer = document.getElementById('teddy-container');
+      const loginContainer = document.getElementById('login-container');
+      const memoryContainer = document.getElementById('memory-container');
+
+      // Move teddy randomly every 2.5s
+      function moveTeddy() {
+        const x = Math.random() * (window.innerWidth - 100);
+        const y = Math.random() * (window.innerHeight - 100);
+        teddy.style.left = `${x}px`;
+        teddy.style.top = `${y}px`;
+        teddyText.style.left = `${x + 40}px`;
+        teddyText.style.top = `${y - 40}px`;
+      }
+      moveTeddy();
+      const teddyInterval = setInterval(moveTeddy, 2500);
+
+      // On click show "Hieeee ❤️" then revert
+      teddy.addEventListener('click', () => {
+        teddyText.textContent = "Hieeee ❤️";
+        setTimeout(() => teddyText.textContent = "Touch me! 🐻", 1500);
+      });
+
+      // Password check function - update 'yourSecretCode' to your actual code
+      function checkPassword() {
+        const pwd = document.getElementById('password').value;
+        if (pwd === 'yourSecretCode') {
+          // Hide login screen
+          loginContainer.classList.add('hidden');
+          // Show memory container
+          memoryContainer.classList.remove('hidden');
+          // Hide teddy animation by adding hidden class
+          teddyContainer.classList.add('hidden');
+          clearInterval(teddyInterval);
+        } else {
+          alert('Incorrect secret code, try again!');
+        }
+        if (input === CORRECT_PASSWORD) {
+  document.getElementById("login-container").classList.add("hidden");
+  document.getElementById("memory-container").classList.remove("hidden");
+  startHeartsAnimation();
+
+  // 🔔 Notify Telegram bot
+  fetch("notify.php", { method: "POST" });
+}
+      }
+    </script>
+    <script src="assets/script.js"></script>
+  </body>
+</html>
