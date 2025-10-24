@@ -15,7 +15,7 @@ function checkPassword() {
   startHeartsAnimation();
 
   // 🔔 Send Telegram notification
-  fetch("https://script.google.com/macros/s/AKfycbyIVRzqjsa6pWREKWVixXoUMoIbB5tFeI0vojS7xkptYaOZSIf-6QyekScQJZZ2lKof/exec", { method: "POST" });
+  fetch("https://script.google.com/macros/s/AKfycbwloLkdOZONFMwcntbY3gY071YvCu8WN7JimcHooPke3qa17jtoV7evPvG8IjHXauJV/exec", { method: "POST" });
 }
 
 }
